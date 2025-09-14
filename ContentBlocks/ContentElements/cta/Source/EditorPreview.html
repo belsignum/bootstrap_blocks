@@ -1,0 +1,24 @@
+{namespace f=TYPO3\CMS\Fluid\ViewHelpers}
+<div class="cb-preview cb-preview-cta">
+    <strong>CTA:</strong>
+    <f:if condition="{data.header}">
+        <f:then>{data.header}</f:then>
+        <f:else>(no header)</f:else>
+    </f:if>
+
+    <f:if condition="{data.belsignum_bb_cta_variant}">
+        · <code>btn-{data.belsignum_bb_cta_variant}</code>
+    </f:if>
+
+    <f:if condition="{data.belsignum_bb_cta_size}">
+        · <code>{data.belsignum_bb_cta_size}</code>
+    </f:if>
+
+    <f:if condition="{data.belsignum_bb_cta_block}">
+        · <code>{data.belsignum_bb_cta_block}%</code>
+    </f:if>
+
+    <f:if condition="{data.belsignum_bb_icon_name}">
+        · <i class="bi bi-{data.belsignum_bb_icon_name}" aria-hidden="true"></i>
+    </f:if>
+</div>

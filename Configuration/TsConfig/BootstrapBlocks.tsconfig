@@ -1,0 +1,48 @@
+TCEFORM.tt_content {
+  imageorient.types.belsignum_bootstrapblocksteaser {
+    removeItems = 1,2,9,10,17,18
+    altLabels {
+      #image-top = Image Top
+      0 = Image Top
+      #image-bottom = Image bottom
+      8 = Image bottom
+      #image-left = Image Left
+      26 = Image Left
+      #image-right = Image Right
+      25 = Image Right
+    }
+  }
+  frame_class.types.belsignum_bootstrapblocksteaser {
+    removeItems = indent,indent-left,indent-right,ruler-before,ruler-after,default
+  }
+}
+
+
+bootstrapBlocks {
+  buttonVariants {
+    project-outline {
+      label = Project Outline
+      items {
+        outline-primary = Outline Primary
+        outline-white = Outline White
+      }
+    }
+  }
+
+  icons {
+    project {
+      label = Project Icons
+      itemsPath = assets/bob-digitalnavy/icons/monotone
+    }
+  }
+  spriteSymbols {
+    duotone {
+      label = Duotone
+      spritesPath = assets/sprites/duotone.svg
+    }
+  }
+}
+
+
+
+

@@ -1,0 +1,45 @@
+name: belsignum/bootstrapblocks-teaser
+type: ContentElement
+identifier: teaser
+vendor: belsignum
+prefixFields: false
+
+group: common
+title: LLL:EXT:bootstrap_blocks/ContentBlocks/ContentElements/teaser/Language/Labels.xlf:element.title
+description: LLL:EXT:bootstrap_blocks/ContentBlocks/ContentElements/teaser/Language/Labels.xlf:element.description
+icon: 'EXT:bootstrap_blocks/ContentBlocks/ContentElements/teaser/Assets/icon.svg'
+
+basics:
+  - Belsignum/Media
+  - Belsignum/Media/Adjustments
+  - Belsignum/Link
+  - Belsignum/Appearance
+
+fields:
+  - identifier: palette_header
+    type: Palette
+    label: Header
+    fields:
+      - identifier: header
+        useExistingField: true
+
+      - identifier: header_layout
+        useExistingField: true
+
+  - identifier: palette_layout
+    type: Palette
+    label: Layout
+    fields:
+      - identifier: header_position
+        useExistingField: true
+
+      - identifier: frame_class
+        type: Select
+        renderType: selectSingle
+        label: LLL:EXT:bootstrap_blocks/ContentBlocks/ContentElements/teaser/Language/Labels.xlf:field.teaser.frame
+        default: none
+
+
+  - identifier: bodytext
+    useExistingField: true
+    enableRichtext: true

@@ -1,0 +1,22 @@
+identifier: Belsignum/Media
+
+fields:
+  - identifier: media_tab
+    type: Tab
+    label: LLL:EXT:bootstrap_blocks/ContentBlocks/ContentElements/teaser/Language/Labels.xlf:tab.media
+
+  - identifier: belsignum_bb_teaser_sprite
+    type: Select
+    renderType: selectSingle
+    label: LLL:EXT:bootstrap_blocks/ContentBlocks/ContentElements/teaser/Language/Labels.xlf:field.teaser.sprite
+    itemsProcFunc: Belsignum\BootstrapBlocks\Tca\ItemsProvider->spriteSymbols
+    default: ''
+    displayCond: 'FIELD:layout:!=:no-image'
+
+  - identifier: assets
+    useExistingField: true
+    maxitems: 1
+    displayCond:
+      AND:
+        - 'FIELD:belsignum_bb_teaser_sprite:=:'
+        - 'FIELD:layout:!=:no-image'

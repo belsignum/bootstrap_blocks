@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff version="1.2">
+	<file source-language="en" datatype="plaintext" original="messages" product-name="bootstrap_blocks">
+		<body>
+			<trans-unit id="tab.appearance"><source>Appearance</source></trans-unit>
+			<trans-unit id="tab.link"><source>Link</source></trans-unit>
+
+			<trans-unit id="element.title"><source>CTA (Bootstrap)</source></trans-unit>
+			<trans-unit id="element.description"><source>Call-to-Action using Link Browser attributes and Bootstrap classes.</source></trans-unit>
+
+			<trans-unit id="field.cta.variant"><source>Button style</source></trans-unit>
+			<trans-unit id="field.cta.size"><source>Button size</source></trans-unit>
+			<trans-unit id="field.cta.width"><source>Width</source></trans-unit>
+			<trans-unit id="field.icon"><source>Button icon (optional)</source></trans-unit>
+		</body>
+	</file>
+</xliff>

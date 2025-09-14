@@ -1,0 +1,89 @@
+.bbb-teaser {
+    display: flex;
+    position: relative;
+
+    &.text-start {
+        .duotone-icon,
+        figure.image {
+            margin-right: auto;
+        }
+    }
+
+    &.text-center {
+        .duotone-icon,
+        figure.image {
+            margin-left: auto;
+            margin-right: auto;
+        }
+    }
+
+    &.text-end {
+        .duotone-icon,
+        figure.image {
+            margin-left: auto;
+        }
+    }
+
+    // image top
+    &.imageorient-0 {
+        flex-wrap: wrap;
+
+        .duotone-icon,
+        figure.image {
+            margin-bottom: 1rem;
+        }
+    }
+
+    // image bottom
+    &.imageorient-8 {
+        flex-wrap: wrap;
+
+        .duotone-icon,
+        figure.image {
+            margin-top: 1rem;
+        }
+    }
+
+    // image bottom
+    &.imageorient-25,
+    &.imageorient-26 {
+        flex-wrap: nowrap;
+        align-items: flex-start;
+        .card-body {
+            width: 70%;
+        }
+        .duotone-icon,
+        figure.image {
+            width: 30%;
+
+        }
+        .duotone-icon {
+            @include media-breakpoint-up(md) {
+                margin-top: $spacer * -.5;
+            }
+            @include media-breakpoint-up(lg) {
+                margin-top: $spacer * -1.5;
+            }
+            @include media-breakpoint-up(xl) {
+                margin-top: $spacer * -1;
+            }
+            @include media-breakpoint-up(xxl) {
+                margin-top: $spacer * -.5;
+            }
+        }
+    }
+
+    &.imageorient-25 {
+        .duotone-icon,
+        figure.image {
+            margin-left: 1rem;
+        }
+    }
+
+    &.imageorient-26 {
+        .duotone-icon,
+        figure.image {
+            margin-right: 1rem;
+        }
+    }
+}

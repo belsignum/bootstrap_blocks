@@ -1,0 +1,7 @@
+lib.contentBlock {
+  partialRootPaths {
+    10 = EXT:fluid_styled_content/Resources/Private/Partials/
+    100 = EXT:bootstrap_blocks/ContentBlocks/Shared/Partials/ContentElements/
+    200 = EXT:bsd_scrollfx/Resources/Private/Partials/FluidStyledContent/
+  }
+}

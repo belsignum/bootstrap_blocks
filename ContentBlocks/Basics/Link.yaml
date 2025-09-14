@@ -1,0 +1,78 @@
+identifier: Belsignum/Link
+
+fields:
+  - identifier: link_tab
+    type: Tab
+    label: LLL:EXT:bootstrap_blocks/ContentBlocks/ContentElements/cta/Language/Labels.xlf:tab.link
+
+  - identifier: subheader
+    useExistingField: true
+    label: LLL:EXT:bootstrap_blocks/ContentBlocks/ContentElements/teaser/Language/Labels.xlf:field.cta.label
+    displayCond: 'FIELD:CType:=:belsignum_bootstrapblocksteaser'
+
+  - identifier: header_link
+    useExistingField: true
+
+  - identifier: palette_style
+    type: Palette
+    label: Link Style
+    fields:
+      - identifier: belsignum_bb_cta_variant
+        type: Select
+        renderType: selectSingle
+        label: LLL:EXT:bootstrap_blocks/ContentBlocks/ContentElements/cta/Language/Labels.xlf:field.cta.variant
+        itemsProcFunc: Belsignum\BootstrapBlocks\Tca\ItemsProvider->buttonVariants
+        default: primary
+
+      - identifier: belsignum_bb_cta_size
+        type: Select
+        renderType: selectSingle
+        label: LLL:EXT:bootstrap_blocks/ContentBlocks/ContentElements/cta/Language/Labels.xlf:field.cta.size
+        default: 'md'
+        items:
+          - label: Small
+            value: sm
+          - label: Default
+            value: md
+          - label: Large
+            value: lg
+
+      - identifier: belsignum_bb_cta_block
+        type: Select
+        renderType: selectSingle
+        label: LLL:EXT:bootstrap_blocks/ContentBlocks/ContentElements/cta/Language/Labels.xlf:field.cta.width
+        default: ''
+        items:
+          - label: Default
+            value: ''
+          - label: 25%
+            value: 25
+          - label: 50%
+            value: 50
+          - label: 75%
+            value: 75
+          - label: 100%
+            value: 100
+
+
+      - identifier: belsignum_bb_icon
+        type: Select
+        renderType: selectSingle
+        label: LLL:EXT:bootstrap_blocks/ContentBlocks/ContentElements/cta/Language/Labels.xlf:field.icon
+        itemsProcFunc: Belsignum\BootstrapBlocks\Tca\ItemsProvider->bootstrapIcons
+    default: ''
+
+  - identifier: belsignum_bb_cta_position
+    type: Select
+    renderType: selectSingle
+    label: LLL:EXT:bootstrap_blocks/ContentBlocks/ContentElements/teaser/Language/Labels.xlf:field.cta.position
+    displayCond: 'FIELD:CType:=:belsignum_bootstrapblocksteaser'
+    default: bottom
+    items:
+      - label: Bottom
+        value: bottom
+      - label: Top
+        value: top
+      - label: Link whole card (stretched link)
+        value: stretched
+

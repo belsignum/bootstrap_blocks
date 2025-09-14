@@ -1,0 +1,22 @@
+name: belsignum/bootstrapblocks--cta
+type: ContentElement
+identifier: cta
+vendor: belsignum
+prefixFields: false
+
+group: common
+title: LLL:EXT:bootstrap_blocks/ContentBlocks/ContentElements/cta/Language/Labels.xlf:element.title
+description: LLL:EXT:bootstrap_blocks/ContentBlocks/ContentElements/cta/Language/Labels.xlf:element.description
+icon: 'EXT:bootstrap_blocks/ContentBlocks/ContentElements/cta/Assets/icon.svg'
+
+basics:
+  - Belsignum/Link
+  - Belsignum/Appearance
+
+fields:
+  - identifier: header
+    useExistingField: true
+    label: LLL:EXT:bootstrap_blocks/ContentBlocks/ContentElements/teaser/Language/Labels.xlf:field.cta.label
+
+  - identifier: header_position
+    useExistingField: true

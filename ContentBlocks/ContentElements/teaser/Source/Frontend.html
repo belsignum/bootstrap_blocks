@@ -1,0 +1,76 @@
+{namespace f=TYPO3\CMS\Fluid\ViewHelpers}
+
+<div class="card bbb-teaser imageorient-{data.imageorient} {f:render(section: 'Text-align', arguments: '{data: data}')} preset-{data.frame_class}">
+    <f:if condition="{data.imageorient} == 0 || {data.imageorient} == 26">
+        <f:render section="Media" arguments="{data: data}" />
+    </f:if>
+    <f:if condition="{data.header_link} && {data.belsignum_bb_cta_position} == 'top'">
+        <f:render partial="Cta" arguments="{data: data, label: data.subheader}" />
+    </f:if>
+
+    <div class="card-body">
+        <f:render partial="Header/All" arguments="{
+            settings: '{defaultHeaderType: 2}',
+            data: '{
+                header: data.header,
+                header_layout: data.header_layout,
+                header_position: data.header_position
+            }'
+        }" />
+
+        <f:if condition="{data.bodytext}">
+            <div class="card-text">
+                {data.bodytext -> f:format.raw()}
+            </div>
+        </f:if>
+
+        <f:if condition="{data.header_link} && {data.belsignum_bb_cta_position} == 'bottom'">
+            <f:render partial="Cta" arguments="{data: data, label: data.subheader}" />
+        </f:if>
+    </div>
+
+    <f:if condition="{data.imageorient} == 8 || {data.imageorient} == 25">
+        <f:render section="Media" arguments="{data: data}" />
+    </f:if>
+
+    <f:if condition="{data.header_link} && {data.belsignum_bb_cta_position} == 'stretched'">
+        <a href="{f:uri.typolink(parameter: data.header_link)}" class="stretched-link">
+            <span class="visually-hidden">
+                {data.subheader}
+            </span>
+        </a>
+    </f:if>
+</div>
+
+<f:section name="Media">
+    <f:if condition="{data.belsignum_bb_teaser_sprite} == ''">
+        <f:then>
+            <f:variable name="media">{data.assets.0}</f:variable>
+            <f:if condition="{media}">
+                <f:render partial="Media/Type" arguments="{
+                    file: media,
+                    dimensions: '{
+                        width: data.imagewidth,
+                        height: data.imageheight
+                    }',
+                    data: data,
+                    settings: settings
+                }" />
+            </f:if>
+        </f:then>
+        <f:else>
+            <svg class="duotone-icon">
+                <use href="#{data.belsignum_bb_teaser_sprite}"></use>
+            </svg>
+        </f:else>
+    </f:if>
+</f:section>
+
+<f:section name="Text-align"><f:spaceless>
+    <f:switch expression="{data.header_position}">
+        <f:case value="left">text-start</f:case>
+        <f:case value="center">text-center</f:case>
+        <f:case value="right">text-end</f:case>
+        <f:defaultCase>text-start</f:defaultCase>
+    </f:switch>
+</f:spaceless></f:section>

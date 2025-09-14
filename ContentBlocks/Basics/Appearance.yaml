@@ -1,0 +1,12 @@
+identifier: Belsignum/Appearance
+
+fields:
+  - identifier: appearance_tab
+    type: Tab
+    label: LLL:EXT:bootstrap_blocks/ContentBlocks/ContentElements/cta/Language/Labels.xlf:tab.appearance
+
+  - identifier: space_before_class
+    useExistingField: true
+
+  - identifier: space_after_class
+    useExistingField: true
