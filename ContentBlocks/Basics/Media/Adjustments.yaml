@@ -23,4 +23,7 @@ fields:
             - 'FIELD:belsignum_bb_teaser_sprite:=:'
             - 'FIELD:layout:!=:no-image'
 
+  - identifier: image_zoom
+    useExistingField: true
+
 

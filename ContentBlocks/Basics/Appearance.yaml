@@ -5,6 +5,9 @@ fields:
     type: Tab
     label: LLL:EXT:bootstrap_blocks/ContentBlocks/ContentElements/cta/Language/Labels.xlf:tab.appearance
 
+  - identifier: layout
+    useExistingField: true
+
   - identifier: space_before_class
     useExistingField: true
 
