@@ -18,9 +18,8 @@
         </f:switch>
         <f:render partial="Misc/SpaceBefore" arguments="{data: data}" />
         <f:render partial="Misc/SpaceAfter" arguments="{data: data}" />
-        <f:if condition="{data.belsignum_bb_icon_name}">bi bi-{data.belsignum_bb_icon_name}</f:if>
+        <f:if condition="{data.belsignum_bb_icon}">bi bi-{data.belsignum_bb_icon}</f:if>
     </f:variable>
-
     <f:link.typolink parameter="{data.header_link}" class="{classes -> bb:cleanline()}"
                      additionalAttributes="{id: 'c{data.uid}'}">
         <f:if condition="{label}">
