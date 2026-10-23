@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff version="1.2">
+	<file source-language="en" target-language="de" datatype="plaintext" original="messages" product-name="bootstrap_blocks">
+		<body>
+			<trans-unit id="tab.appearance"><source>Appearance</source><target>Erscheinungsbild</target></trans-unit>
+			<trans-unit id="tab.link"><source>Link</source><target>Link</target></trans-unit>
+
+			<trans-unit id="element.title"><source>CTA (Bootstrap)</source><target>CTA (Bootstrap)</target></trans-unit>
+			<trans-unit id="element.description"><source>Call-to-Action using Link Browser attributes and Bootstrap classes.</source><target>Call-to-Action mit Link-Attributen aus dem Link Browser und Bootstrap-Klassen.</target></trans-unit>
+
+			<trans-unit id="field.cta.variant"><source>Button style</source><target>Button-Stil</target></trans-unit>
+			<trans-unit id="field.cta.size"><source>Button size</source><target>Button-Größe</target></trans-unit>
+			<trans-unit id="field.cta.width"><source>Width</source><target>Breite</target></trans-unit>
+			<trans-unit id="field.icon"><source>Button icon (optional)</source><target>Button-Icon (optional)</target></trans-unit>
+
+			<trans-unit id="preview.icon"><source>Icon</source><target>Icon</target></trans-unit>
+			<trans-unit id="preview.alignment"><source>Alignment</source><target>Ausrichtung</target></trans-unit>
+			<trans-unit id="preview.noLink"><source>No link set, the button is not shown</source><target>Kein Link gesetzt, der Button wird nicht angezeigt</target></trans-unit>
+		</body>
+	</file>
+</xliff>

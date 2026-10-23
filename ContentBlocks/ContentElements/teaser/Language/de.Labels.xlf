@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff version="1.2">
+	<file source-language="en" target-language="de" datatype="plaintext" original="messages" product-name="bootstrap_blocks">
+		<body>
+			<trans-unit id="tab.media"><source>Media</source><target>Medien</target></trans-unit>
+
+			<trans-unit id="element.title"><source>Teaser (Bootstrap)</source><target>Teaser (Bootstrap)</target></trans-unit>
+			<trans-unit id="element.description"><source>Teaser with media or project sprite, title, text and link/CTA.</source><target>Teaser mit Media- oder Sprite-Bild, Titel, Text und Link/CTA.</target></trans-unit>
+
+			<trans-unit id="field.teaser.layout"><source>Layout</source><target>Layout</target></trans-unit>
+			<trans-unit id="field.teaser.sprite"><source>Sprite symbol</source><target>Sprite-Symbol</target></trans-unit>
+			<trans-unit id="field.cta.position"><source>Position</source><target>CTA Position</target></trans-unit>
+			<trans-unit id="field.cta.label"><source>Button Label</source><target>Button-Beschriftung</target></trans-unit>
+			<trans-unit id="field.icon"><source>Button icon (optional)</source><target>Button-Icon (optional)</target></trans-unit>
+			<trans-unit id="field.teaser.frame"><source>Card preset</source><target>Karten-Preset</target></trans-unit>
+			<trans-unit id="field.teaser.background"><source>Background image</source><target>Hintergrundbild</target></trans-unit>
+			<trans-unit id="field.teaser.background.description"><source>Fills the card behind text and media. The card preset decides how it is shown, e.g. darkened.</source><target>Füllt die Karte hinter Text und Bild. Wie es erscheint, etwa abgedunkelt, bestimmt das Karten-Preset.</target></trans-unit>
+
+			<trans-unit id="preview.text"><source>Text</source><target>Text</target></trans-unit>
+			<trans-unit id="preview.loading"><source>Image loading</source><target>Bilder laden</target></trans-unit>
+		</body>
+	</file>
+</xliff>
