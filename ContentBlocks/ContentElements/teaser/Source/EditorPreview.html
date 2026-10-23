@@ -44,12 +44,12 @@
         </f:render>
     </f:if>
     <f:if condition="{data.frame_class}">
-        <f:render section="Row" arguments="{label: '{labels}field.teaser.frame'}" contentAs="value">
+        <f:render section="Row" arguments="{label: '{labels}preview.preset'}" contentAs="value">
             <code>preset-{data.frame_class}</code>
         </f:render>
     </f:if>
     <f:if condition="{data.header_link}">
-        <f:render section="Row" arguments="{label: '{labels}field.cta.label'}" contentAs="value">
+        <f:render section="Row" arguments="{label: '{labels}preview.button'}" contentAs="value">
             <f:if condition="{data.subheader}">
                 <f:then>{data.subheader}</f:then>
                 <f:else>CTA</f:else>

@@ -18,6 +18,8 @@
 
 			<trans-unit id="preview.text"><source>Text</source></trans-unit>
 			<trans-unit id="preview.loading"><source>Image loading</source></trans-unit>
+			<trans-unit id="preview.preset"><source>Preset</source></trans-unit>
+			<trans-unit id="preview.button"><source>Button</source></trans-unit>
 		</body>
 	</file>
 </xliff>
