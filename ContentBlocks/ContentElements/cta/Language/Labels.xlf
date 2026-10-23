@@ -12,6 +12,10 @@
 			<trans-unit id="field.cta.size"><source>Button size</source></trans-unit>
 			<trans-unit id="field.cta.width"><source>Width</source></trans-unit>
 			<trans-unit id="field.icon"><source>Button icon (optional)</source></trans-unit>
+
+			<trans-unit id="preview.icon"><source>Icon</source></trans-unit>
+			<trans-unit id="preview.alignment"><source>Alignment</source></trans-unit>
+			<trans-unit id="preview.noLink"><source>No link set, the button is not shown</source></trans-unit>
 		</body>
 	</file>
 </xliff>

@@ -1,24 +1,52 @@
-{namespace f=TYPO3\CMS\Fluid\ViewHelpers}
-<div class="cb-preview cb-preview-cta">
-    <strong>CTA:</strong>
-    <f:if condition="{data.header}">
-        <f:then>{data.header}</f:then>
-        <f:else>(no header)</f:else>
-    </f:if>
+<html
+    data-namespace-typo3-fluid="true"
+    xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+>
 
+<f:comment>
+    The page module shows the button label (header) above this preview already (core preview header), so it is not
+    repeated here. Without a link the frontend renders nothing (partial Cta), which the preview says.
+    Labels by full LLL path like in EditorInterface.yaml: cb:translate expects them in Source/Language/.
+</f:comment>
+<f:variable name="labels" value="LLL:EXT:bootstrap_blocks/ContentBlocks/ContentElements/cta/Language/Labels.xlf:" />
+<dl class="mb-0">
+    <f:render section="Row" arguments="{label: '{labels}tab.link'}" contentAs="value">
+        <f:if condition="{data.header_link}">
+            <f:then><code>{data.header_link}</code></f:then>
+            <f:else><span class="text-danger"><f:translate key="{labels}preview.noLink" /></span></f:else>
+        </f:if>
+    </f:render>
     <f:if condition="{data.belsignum_bb_cta_variant}">
-        · <code>btn-{data.belsignum_bb_cta_variant}</code>
+        <f:render section="Row" arguments="{label: '{labels}field.cta.variant'}" contentAs="value">
+            <code>{data.belsignum_bb_cta_variant}</code>
+        </f:render>
     </f:if>
-
     <f:if condition="{data.belsignum_bb_cta_size}">
-        · <code>{data.belsignum_bb_cta_size}</code>
+        <f:render section="Row" arguments="{label: '{labels}field.cta.size'}" contentAs="value">
+            <code>{data.belsignum_bb_cta_size}</code>
+        </f:render>
     </f:if>
-
     <f:if condition="{data.belsignum_bb_cta_block}">
-        · <code>{data.belsignum_bb_cta_block}%</code>
+        <f:render section="Row" arguments="{label: '{labels}field.cta.width'}" contentAs="value">
+            {data.belsignum_bb_cta_block} %
+        </f:render>
     </f:if>
+    <f:if condition="{data.belsignum_bb_icon}">
+        <f:render section="Row" arguments="{label: '{labels}preview.icon'}" contentAs="value">
+            <code>{data.belsignum_bb_icon}</code>
+        </f:render>
+    </f:if>
+    <f:if condition="{data.header_position}">
+        <f:render section="Row" arguments="{label: '{labels}preview.alignment'}" contentAs="value">
+            <code>{data.header_position}</code>
+        </f:render>
+    </f:if>
+</dl>
 
-    <f:if condition="{data.belsignum_bb_icon_name}">
-        · <i class="bi bi-{data.belsignum_bb_icon_name}" aria-hidden="true"></i>
-    </f:if>
-</div>
+<f:section name="Row">
+    <div>
+        <dt class="d-inline fw-normal text-body-secondary"><f:translate key="{label}" />:</dt>
+        <dd class="d-inline mb-0">{value -> f:format.raw() -> f:spaceless()}</dd>
+    </div>
+</f:section>
+</html>
