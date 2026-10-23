@@ -1,24 +1,96 @@
-{namespace f=TYPO3\CMS\Fluid\ViewHelpers}
-<div class="cb-preview cb-preview-teaser">
-    <strong>Teaser:</strong>
-    <f:if condition="{data.header}">
-        <f:then>{data.header}</f:then>
-        <f:else>(no header)</f:else>
-    </f:if>
+<html
+    data-namespace-typo3-fluid="true"
+    xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+    xmlns:be="http://typo3.org/ns/TYPO3/CMS/Backend/ViewHelpers"
+    xmlns:cb="http://typo3.org/ns/TYPO3/CMS/ContentBlocks/ViewHelpers"
+>
 
-    <f:if condition="{data.belsignum_bb_teaser_layout}">
-        · <code>{data.belsignum_bb_teaser_layout}</code>
-    </f:if>
+<f:comment>
+    The page module shows header and subheader above this preview already (core preview header); the subheader is the
+    button label here, so the preview names it once more. Images like the core preview (markup preview-thumbnails,
+    64 px), hidden file references left out like there; the media gives way to a sprite symbol as in the frontend.
+    Labels by full LLL path like in EditorInterface.yaml: cb:translate expects them in Source/Language/.
+</f:comment>
+<cb:asset.css identifier="content-block-belsignum-bootstrapblocks-teaser-be" file="EditorPreview.css" />
+<f:variable name="labels" value="LLL:EXT:bootstrap_blocks/ContentBlocks/ContentElements/teaser/Language/Labels.xlf:" />
+<f:variable name="ctaLabels" value="LLL:EXT:bootstrap_blocks/ContentBlocks/ContentElements/cta/Language/Labels.xlf:" />
+<f:if condition="!{data.belsignum_bb_teaser_sprite} && {data.assets.0} && !{data.assets.0.properties.hidden}">
+    <f:variable name="media">{data.assets.0}</f:variable>
+</f:if>
+<f:if condition="{data.image.0} && !{data.image.0.properties.hidden}">
+    <f:variable name="background">{data.image.0}</f:variable>
+</f:if>
 
+<f:if condition="{media} || {background}">
+    <div class="preview-thumbnails bbb-preview-thumbnails mb-2">
+        <f:if condition="{media}">
+            <f:render section="Thumbnail" arguments="{file: media, label: '{labels}tab.media'}" />
+        </f:if>
+        <f:if condition="{background}">
+            <f:render section="Thumbnail" arguments="{file: background, label: '{labels}field.teaser.background'}" />
+        </f:if>
+    </div>
+</f:if>
+
+<dl class="mb-0">
+    <f:if condition="{data.belsignum_bb_teaser_sprite}">
+        <f:render section="Row" arguments="{label: '{labels}field.teaser.sprite'}" contentAs="value">
+            <code>{data.belsignum_bb_teaser_sprite}</code>
+        </f:render>
+    </f:if>
+    <f:if condition="{data.bodytext}">
+        <f:render section="Row" arguments="{label: '{labels}preview.text'}" contentAs="value">
+            {data.bodytext -> f:format.stripTags() -> f:format.crop(maxCharacters: 120, append: '…')}
+        </f:render>
+    </f:if>
     <f:if condition="{data.frame_class}">
-        · <code>{data.frame_class}</code>
+        <f:render section="Row" arguments="{label: '{labels}field.teaser.frame'}" contentAs="value">
+            <code>preset-{data.frame_class}</code>
+        </f:render>
     </f:if>
+    <f:if condition="{data.header_link}">
+        <f:render section="Row" arguments="{label: '{labels}field.cta.label'}" contentAs="value">
+            <f:if condition="{data.subheader}">
+                <f:then>{data.subheader}</f:then>
+                <f:else>CTA</f:else>
+            </f:if>
+        </f:render>
+        <f:render section="Row" arguments="{label: '{ctaLabels}tab.link'}" contentAs="value">
+            <code>{data.header_link}</code>
+        </f:render>
+        <f:render section="Row" arguments="{label: '{labels}field.cta.position'}" contentAs="value">
+            <code>{data.belsignum_bb_cta_position}</code>
+        </f:render>
+    </f:if>
+    <f:comment>Same reading of tx_imagelazyload as Frontend.html; without that extension the field is missing.</f:comment>
+    <f:if condition="{media} || {background}">
+        <f:if condition="{data._raw.tx_imagelazyload} == 1">
+            <f:then>
+                <f:render section="Row" arguments="{label: '{labels}preview.loading'}" contentAs="value"><code>eager</code></f:render>
+            </f:then>
+            <f:else if="{data._raw.tx_imagelazyload} == '0'">
+                <f:render section="Row" arguments="{label: '{labels}preview.loading'}" contentAs="value"><code>lazy</code></f:render>
+            </f:else>
+        </f:if>
+    </f:if>
+</dl>
 
-    <f:if condition="{data.belsignum_bb_cta_variant}">
-        · <code>btn-{data.belsignum_bb_cta_variant}</code>
-    </f:if>
+<f:section name="Thumbnail">
+    <div class="preview-thumbnails-element">
+        <div class="preview-thumbnails-element-image">
+            <f:if condition="{file.originalFile.type} == 2">
+                <f:then><be:thumbnail image="{file}" width="64" height="64" loading="lazy" /></f:then>
+                <f:else><core:iconForResource resource="{file.originalFile}" size="medium" /></f:else>
+            </f:if>
+        </div>
+        <small class="d-block text-body-secondary"><f:translate key="{label}" /></small>
+    </div>
+</f:section>
 
-    <f:if condition="{data.bb_icon_name}">
-        · <i class="bi bi-{data.bb_icon_name}" aria-hidden="true"></i>
-    </f:if>
-</div>
+<f:section name="Row">
+    <div>
+        <dt class="d-inline fw-normal text-body-secondary"><f:translate key="{label}" />:</dt>
+        <dd class="d-inline mb-0">{value -> f:format.raw() -> f:spaceless()}</dd>
+    </div>
+</f:section>
+</html>

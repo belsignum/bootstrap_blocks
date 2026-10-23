@@ -15,6 +15,9 @@
 			<trans-unit id="field.teaser.frame"><source>Card preset</source></trans-unit>
 			<trans-unit id="field.teaser.background"><source>Background image</source></trans-unit>
 			<trans-unit id="field.teaser.background.description"><source>Fills the card behind text and media. The card preset decides how it is shown, e.g. darkened.</source></trans-unit>
+
+			<trans-unit id="preview.text"><source>Text</source></trans-unit>
+			<trans-unit id="preview.loading"><source>Image loading</source></trans-unit>
 		</body>
 	</file>
 </xliff>
