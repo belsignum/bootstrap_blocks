@@ -69,6 +69,18 @@
         <f:then>
             <f:variable name="media">{data.assets.0}</f:variable>
             <f:if condition="{media}">
+                <f:comment>
+                    Lazy loading per element with t3brightside/imagelazyload: its toggle "Lazy load images" stores 1
+                    for not lazy. The fluid_styled_content media partials read the attribute from
+                    settings.media.lazyLoading only (Media/Type/Image passes no data). The field is not part of this
+                    Content Block, so it comes from the raw record; without that extension it is missing (neither 1
+                    nor '0') and the setting stays.
+                </f:comment>
+                <f:if condition="{data._raw.tx_imagelazyload} == 1">
+                    <f:then><f:variable name="loading" value="eager" /></f:then>
+                    <f:else if="{data._raw.tx_imagelazyload} == '0'"><f:variable name="loading" value="lazy" /></f:else>
+                    <f:else><f:variable name="loading" value="{settings.media.lazyLoading}" /></f:else>
+                </f:if>
                 <f:render partial="Media/Type" arguments="{
                     file: media,
                     dimensions: '{
@@ -76,7 +88,13 @@
                         height: data.imageheight
                     }',
                     data: data,
-                    settings: settings
+                    settings: '{
+                        media: {
+                            lazyLoading: loading,
+                            imageDecoding: settings.media.imageDecoding,
+                            popup: settings.media.popup
+                        }
+                    }'
                 }" />
             </f:if>
         </f:then>

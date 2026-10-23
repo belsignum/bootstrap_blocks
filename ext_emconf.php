@@ -12,5 +12,8 @@ $EM_CONF[$_EXTKEY] = [
             'typo3' => '12.4.0-12.4.99',
             'content_blocks' => ''
         ],
+        'suggests' => [
+            'imagelazyload' => ''
+        ],
     ],
 ];
