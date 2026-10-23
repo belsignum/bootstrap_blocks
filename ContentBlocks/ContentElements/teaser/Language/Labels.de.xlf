@@ -11,6 +11,8 @@
 			<trans-unit id="field.cta.variant"><source>Button-Stil</source></trans-unit>
 			<trans-unit id="field.icon"><source>Button-Icon (optional)</source></trans-unit>
 			<trans-unit id="field.teaser.card"><source>Karten-Preset</source></trans-unit>
+			<trans-unit id="field.teaser.background"><source>Hintergrundbild</source></trans-unit>
+			<trans-unit id="field.teaser.background.description"><source>Füllt die Karte hinter Text und Bild. Wie es erscheint, etwa abgedunkelt, bestimmt das Karten-Preset.</source></trans-unit>
 		</body>
 	</file>
 </xliff>

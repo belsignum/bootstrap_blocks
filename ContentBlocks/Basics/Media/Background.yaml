@@ -1,0 +1,10 @@
+identifier: Belsignum/Media/Background
+
+# Core field "image", reused as background of the card; allowed formats follow the core image file extensions
+fields:
+  - identifier: image
+    useExistingField: true
+    label: LLL:EXT:bootstrap_blocks/ContentBlocks/ContentElements/teaser/Language/Labels.xlf:field.teaser.background
+    description: LLL:EXT:bootstrap_blocks/ContentBlocks/ContentElements/teaser/Language/Labels.xlf:field.teaser.background.description
+    maxitems: 1
+    disallowed: 'pdf,ai'

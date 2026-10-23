@@ -13,6 +13,8 @@
 			<trans-unit id="field.cta.label"><source>Button Label</source></trans-unit>
 			<trans-unit id="field.icon"><source>Button icon (optional)</source></trans-unit>
 			<trans-unit id="field.teaser.frame"><source>Card preset</source></trans-unit>
+			<trans-unit id="field.teaser.background"><source>Background image</source></trans-unit>
+			<trans-unit id="field.teaser.background.description"><source>Fills the card behind text and media. The card preset decides how it is shown, e.g. darkened.</source></trans-unit>
 		</body>
 	</file>
 </xliff>

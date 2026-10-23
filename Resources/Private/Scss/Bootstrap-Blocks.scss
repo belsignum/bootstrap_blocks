@@ -87,3 +87,23 @@
         }
     }
 }
+
+// Background image (field "image"): fills the card behind media and body. The other children are positioned so they
+// paint above it; the stretched link stays unpositioned, its ::after covers the whole card.
+.bbb-teaser.has-background {
+    > .bbb-teaser-background {
+        position: absolute;
+        inset: 0;
+        overflow: hidden;
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+
+    > :not(.bbb-teaser-background, .stretched-link) {
+        position: relative;
+    }
+}

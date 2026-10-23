@@ -12,6 +12,7 @@ icon: 'EXT:bootstrap_blocks/ContentBlocks/ContentElements/teaser/Assets/icon.svg
 basics:
   - Belsignum/Media
   - Belsignum/Media/Adjustments
+  - Belsignum/Media/Background
   - Belsignum/Link
   - Belsignum/Appearance
 

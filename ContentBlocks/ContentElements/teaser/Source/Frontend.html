@@ -4,8 +4,21 @@
     xmlns:bb="http://typo3.org/ns/Belsignum/BootstrapBlocks/ViewHelpers"
 >
 
+<f:comment>
+    Lazy loading per element with t3brightside/imagelazyload: its toggle "Lazy load images" stores 1 for not lazy.
+    The field is not part of this Content Block, so it comes from the raw record; without that extension it is
+    missing (neither 1 nor '0') and the setting stays. Applies to the media and the background image.
+</f:comment>
+<f:if condition="{data._raw.tx_imagelazyload} == 1">
+    <f:then><f:variable name="loading" value="eager" /></f:then>
+    <f:else if="{data._raw.tx_imagelazyload} == '0'"><f:variable name="loading" value="lazy" /></f:else>
+    <f:else><f:variable name="loading" value="{settings.media.lazyLoading}" /></f:else>
+</f:if>
+<f:variable name="background">{data.image.0}</f:variable>
+
 <f:variable name="classes">
     card bbb-teaser
+    {f:if(condition: background, then: 'has-background')}
     imageorient-{data.imageorient}
     {f:render(section: 'Text-align', arguments: '{data: data}')}
     preset-{data.frame_class}
@@ -16,8 +29,17 @@
 
 
 <div class="{classes -> bb:cleanline()}">
+    <f:if condition="{background}">
+        <f:comment>
+            Decorative: the content of the card is in its text, so no alternative text. 1100 px covers the widest
+            single-column card at 1x and a 536 px card at 2x; smaller originals are not upscaled.
+        </f:comment>
+        <div class="bbb-teaser-background">
+            <f:image image="{background}" maxWidth="1100" alt="" loading="{loading}" />
+        </div>
+    </f:if>
     <f:if condition="{data.imageorient} == 0 || {data.imageorient} == 26">
-        <f:render section="Media" arguments="{data: data}" />
+        <f:render section="Media" arguments="{data: data, loading: loading, settings: settings}" />
     </f:if>
     <f:if condition="{data.header_link} && {data.belsignum_bb_cta_position} == 'top'">
         <f:render partial="Cta" arguments="{data: data, label: data.subheader}" />
@@ -45,7 +67,7 @@
     </div>
 
     <f:if condition="{data.imageorient} == 8 || {data.imageorient} == 25">
-        <f:render section="Media" arguments="{data: data}" />
+        <f:render section="Media" arguments="{data: data, loading: loading, settings: settings}" />
     </f:if>
 
     <f:if condition="{data.header_link} && {data.belsignum_bb_cta_position} == 'stretched'">
@@ -70,17 +92,9 @@
             <f:variable name="media">{data.assets.0}</f:variable>
             <f:if condition="{media}">
                 <f:comment>
-                    Lazy loading per element with t3brightside/imagelazyload: its toggle "Lazy load images" stores 1
-                    for not lazy. The fluid_styled_content media partials read the attribute from
-                    settings.media.lazyLoading only (Media/Type/Image passes no data). The field is not part of this
-                    Content Block, so it comes from the raw record; without that extension it is missing (neither 1
-                    nor '0') and the setting stays.
+                    The fluid_styled_content media partials read the loading attribute from settings.media.lazyLoading
+                    only (Media/Type/Image passes no data), so it goes there.
                 </f:comment>
-                <f:if condition="{data._raw.tx_imagelazyload} == 1">
-                    <f:then><f:variable name="loading" value="eager" /></f:then>
-                    <f:else if="{data._raw.tx_imagelazyload} == '0'"><f:variable name="loading" value="lazy" /></f:else>
-                    <f:else><f:variable name="loading" value="{settings.media.lazyLoading}" /></f:else>
-                </f:if>
                 <f:render partial="Media/Type" arguments="{
                     file: media,
                     dimensions: '{
