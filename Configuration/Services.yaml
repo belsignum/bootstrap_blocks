@@ -7,3 +7,9 @@ services:
   Belsignum\BootstrapBlocks\:
     resource: '../Classes/*'
     exclude: '../Classes/Domain/Model/*'
+
+  # Preview renderers are created by GeneralUtility::makeInstance(), arguments as for the Content Blocks one
+  Belsignum\BootstrapBlocks\Preview\TeaserPreviewRenderer:
+    public: true
+    arguments:
+      $cache: '@cache.content_blocks_preview'
