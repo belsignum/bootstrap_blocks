@@ -71,14 +71,18 @@
     </f:if>
 
     <f:if condition="{data.header_link} && {data.belsignum_bb_cta_position} == 'stretched'">
+        <f:comment>
+            The link carries the id of the content element like the CTA (only one of the two is rendered), for anchors
+            and click tracking.
+        </f:comment>
         <f:if condition="{data.image_zoom}">
             <f:then>
-                <a href="#" class="stretched-link"
+                <a href="#" class="stretched-link" id="c{data.uid}"
                    data-src="{f:uri.typolink(parameter: data.header_link)}"
                    data-fancybox data-type="iframe" data-width="100%" data-height="auto" aria-label="{data.subheader}"></a>
             </f:then>
             <f:else>
-                <a href="{f:uri.typolink(parameter: data.header_link)}" class="stretched-link" aria-label="{data.subheader}"></a>
+                <a href="{f:uri.typolink(parameter: data.header_link)}" class="stretched-link" id="c{data.uid}" aria-label="{data.subheader}"></a>
             </f:else>
         </f:if>
 
