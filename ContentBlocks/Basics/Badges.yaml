@@ -1,0 +1,52 @@
+identifier: Belsignum/Badges
+
+# Badges of a card, like files and their references in the core: each child is one use. The selector above the list
+# offers the shared badges (record type belsignum_bb_badge, text and colour in one place) and, as its first entry, a
+# free badge with its own text and colour. The core shows no "Create new" link next to a selector (foreign_selector).
+# Limits by page TSconfig: TCEFORM.tt_content.belsignum_bb_badges.config.maxitems; under
+# TCEFORM.belsignum_bb_badge_reference.badge removeItems = 0 for shared badges only, PAGE_TSCONFIG_ID for the folder of
+# the shared badges (all folders when not set).
+fields:
+  - identifier: belsignum_bb_badges
+    type: Collection
+    table: belsignum_bb_badge_reference
+    label: LLL:EXT:bootstrap_blocks/ContentBlocks/RecordTypes/badge/Language/Labels.xlf:field.badges
+    description: LLL:EXT:bootstrap_blocks/ContentBlocks/RecordTypes/badge/Language/Labels.xlf:field.badges.description
+    # Title in the list: the text of a free badge, else the shared badge
+    labelField: text
+    fallbackLabelFields:
+      - badge
+    foreign_selector: badge
+    appearance:
+      collapseAll: true
+      useSortable: true
+    fields:
+      - identifier: badge
+        type: Select
+        renderType: selectSingle
+        label: LLL:EXT:bootstrap_blocks/ContentBlocks/RecordTypes/badge/Language/Labels.xlf:field.badge
+        foreign_table: belsignum_bb_badge
+        # Sorted by text through default_sortby of the shared badges
+        foreign_table_where: 'AND {#belsignum_bb_badge}.{#sys_language_uid} IN (-1,0) AND ({#belsignum_bb_badge}.{#pid} = ###PAGE_TSCONFIG_ID### OR ###PAGE_TSCONFIG_ID### = 0)'
+        items:
+          - label: LLL:EXT:bootstrap_blocks/ContentBlocks/RecordTypes/badge/Language/Labels.xlf:field.badge.free
+            value: 0
+        default: 0
+        onChange: reload
+        # Which shared badge applies is the same in every language; its own translation brings the text
+        l10n_mode: exclude
+
+      - identifier: text
+        type: Text
+        label: LLL:EXT:bootstrap_blocks/ContentBlocks/RecordTypes/badge/Language/Labels.xlf:field.text
+        max: 30
+        displayCond: 'FIELD:badge:=:0'
+
+      - identifier: variant
+        type: Select
+        renderType: selectSingle
+        label: LLL:EXT:bootstrap_blocks/ContentBlocks/RecordTypes/badge/Language/Labels.xlf:field.variant
+        itemsProcFunc: Belsignum\BootstrapBlocks\Tca\ItemsProvider->badgeVariants
+        default: primary
+        displayCond: 'FIELD:badge:=:0'
+        l10n_mode: exclude

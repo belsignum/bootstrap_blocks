@@ -276,7 +276,7 @@ final class ItemsProvider
      * For spriteSymbols, item labels may be de-prefixed later (see buildItemsFromSpriteFile()).
      *
      * @param array  $pageTs     Full PageTS array
-     * @param string $featureKey One of: buttonVariants | icons | spriteSymbols
+     * @param string $featureKey One of: buttonVariants | badgeVariants | icons | spriteSymbols
      * @param bool   $allowPaths Allow directory/sprite path processing
      * @param string $iconPrefix Icon identifier prefix for registered icons
      * @return array{itemGroups: array<string,string>, items: array<int, array<string,string>>}
@@ -377,6 +377,30 @@ final class ItemsProvider
 
         $pageTs  = $this->resolvePageTs($config);
         $project = $this->readGroupedProjectItems($pageTs, 'buttonVariants', false, '');
+
+        if ($project['itemGroups'] !== []) {
+            $itemGroups = array_merge($itemGroups, $project['itemGroups']);
+            $items = array_merge($items, $project['items']);
+        }
+
+        $config['items'] = $items;
+        $config['itemGroups'] = $itemGroups;
+    }
+
+    /**
+     * Badge variants (class text-bg-<value>): Bootstrap theme colours in "core" group + project groups (from TSconfig).
+     * Used by the shared badge (belsignum_bb_badge) and by free badges of a card (belsignum_bb_badge_reference).
+     */
+    public function badgeVariants(array &$config): void
+    {
+        $items = [];
+        foreach (['primary', 'secondary', 'success', 'danger', 'warning', 'info', 'light', 'dark'] as $value) {
+            $items[] = ['label' => ucfirst($value), 'value' => $value, 'group' => 'core'];
+        }
+        $itemGroups = ['core' => 'Core (Bootstrap)'];
+
+        $pageTs  = $this->resolvePageTs($config);
+        $project = $this->readGroupedProjectItems($pageTs, 'badgeVariants', false, '');
 
         if ($project['itemGroups'] !== []) {
             $itemGroups = array_merge($itemGroups, $project['itemGroups']);

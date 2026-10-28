@@ -46,6 +46,20 @@
     </f:if>
 
     <div class="card-body">
+        <f:comment>
+            Before the title, so it is read first. Without a preset the badges stand above the title; a preset may
+            position them on the card instead. Collected first, so no empty wrapper remains when none has a text.
+        </f:comment>
+        <f:variable name="badges"><f:for each="{data.belsignum_bb_badges}" as="item">
+            <f:if condition="{item.badge}">
+                <f:then><f:render section="Badge" arguments="{text: item.badge.text, variant: item.badge.variant}" /></f:then>
+                <f:else><f:render section="Badge" arguments="{text: item.text, variant: item.variant}" /></f:else>
+            </f:if>
+        </f:for></f:variable>
+        <f:if condition="{badges -> f:spaceless()}">
+            <div class="bbb-teaser-badges d-flex flex-wrap gap-2">{badges -> f:spaceless() -> f:format.raw()}</div>
+        </f:if>
+
         <f:render partial="Header/All" arguments="{
             settings: '{defaultHeaderType: 2}',
             data: '{
@@ -121,6 +135,15 @@
                 <use href="#{data.belsignum_bb_teaser_sprite}"></use>
             </svg>
         </f:else>
+    </f:if>
+</f:section>
+
+<f:comment>
+    A shared badge brings text and colour; a free one has its own, or none when the shared badge is hidden or deleted.
+</f:comment>
+<f:section name="Badge">
+    <f:if condition="{text}">
+        <span class="badge text-bg-{variant}">{text}</span>
     </f:if>
 </f:section>
 

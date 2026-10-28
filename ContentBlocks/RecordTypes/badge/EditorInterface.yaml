@@ -1,0 +1,24 @@
+name: belsignum/bootstrapblocks-badge
+table: belsignum_bb_badge
+prefixFields: false
+labelField: text
+# Alphabetical in the list module and in the selector of the teaser
+sortField: text
+title: LLL:EXT:bootstrap_blocks/ContentBlocks/RecordTypes/badge/Language/Labels.xlf:title
+description: LLL:EXT:bootstrap_blocks/ContentBlocks/RecordTypes/badge/Language/Labels.xlf:description
+
+fields:
+  - identifier: text
+    type: Text
+    label: LLL:EXT:bootstrap_blocks/ContentBlocks/RecordTypes/badge/Language/Labels.xlf:field.text
+    required: true
+    max: 30
+
+  # The colour stays with the badge in every language
+  - identifier: variant
+    type: Select
+    renderType: selectSingle
+    label: LLL:EXT:bootstrap_blocks/ContentBlocks/RecordTypes/badge/Language/Labels.xlf:field.variant
+    itemsProcFunc: Belsignum\BootstrapBlocks\Tca\ItemsProvider->badgeVariants
+    default: primary
+    l10n_mode: exclude

@@ -14,6 +14,7 @@
 <cb:asset.css identifier="content-block-belsignum-bootstrapblocks-teaser-be" file="EditorPreview.css" />
 <f:variable name="labels" value="LLL:EXT:bootstrap_blocks/ContentBlocks/ContentElements/teaser/Language/Labels.xlf:" />
 <f:variable name="ctaLabels" value="LLL:EXT:bootstrap_blocks/ContentBlocks/ContentElements/cta/Language/Labels.xlf:" />
+<f:variable name="badgeLabels" value="LLL:EXT:bootstrap_blocks/ContentBlocks/RecordTypes/badge/Language/Labels.xlf:" />
 <f:if condition="!{data.belsignum_bb_teaser_sprite} && {data.assets.0} && !{data.assets.0.properties.hidden}">
     <f:variable name="media">{data.assets.0}</f:variable>
 </f:if>
@@ -33,6 +34,16 @@
 </f:if>
 
 <dl class="mb-0">
+    <f:if condition="{data.belsignum_bb_badges}">
+        <f:render section="Row" arguments="{label: '{badgeLabels}field.badges'}" contentAs="value">
+            <f:for each="{data.belsignum_bb_badges}" as="item" iteration="iteration">
+                <f:if condition="{item.badge}">
+                    <f:then>{item.badge.text}</f:then>
+                    <f:else>{item.text}</f:else>
+                </f:if>{f:if(condition: iteration.isLast, else: ', ')}
+            </f:for>
+        </f:render>
+    </f:if>
     <f:if condition="{data.belsignum_bb_teaser_sprite}">
         <f:render section="Row" arguments="{label: '{labels}field.teaser.sprite'}" contentAs="value">
             <code>{data.belsignum_bb_teaser_sprite}</code>

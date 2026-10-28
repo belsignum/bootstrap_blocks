@@ -27,6 +27,10 @@ fields:
       - identifier: header_layout
         useExistingField: true
 
+  # Next to the title, because a badge is a label of the card like it
+  - identifier: Belsignum/Badges
+    type: Basic
+
   - identifier: palette_layout
     type: Palette
     label: Layout

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff version="1.2">
+	<file source-language="en" datatype="plaintext" original="messages" product-name="bootstrap_blocks">
+		<body>
+			<trans-unit id="title"><source>Badge (Bootstrap)</source></trans-unit>
+			<trans-unit id="description"><source>Shared badge for teasers, such as a content type or a protocol: text and colour in one place.</source></trans-unit>
+
+			<trans-unit id="field.text"><source>Text</source></trans-unit>
+			<trans-unit id="field.variant"><source>Variant</source></trans-unit>
+
+			<trans-unit id="field.badges"><source>Badges</source></trans-unit>
+			<trans-unit id="field.badges.description"><source>Pick a shared badge in the list, or "Free badge" for one with its own text and colour.</source></trans-unit>
+			<trans-unit id="field.badge"><source>Shared badge</source></trans-unit>
+			<trans-unit id="field.badge.free"><source>Free badge (own text and colour)</source></trans-unit>
+		</body>
+	</file>
+</xliff>

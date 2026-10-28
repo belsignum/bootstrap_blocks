@@ -107,3 +107,8 @@
         position: relative;
     }
 }
+
+// Badges (belsignum_bb_badges): above the title with a small gap; a preset may place them on the card instead
+.bbb-teaser-badges {
+    margin-bottom: $spacer * .5;
+}

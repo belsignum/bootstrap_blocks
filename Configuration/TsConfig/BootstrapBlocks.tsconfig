@@ -32,6 +32,16 @@ bootstrapBlocks {
     }
   }
 
+  # Badge colours: class text-bg-<key>; the project styles the ones that are no Bootstrap theme colour
+  badgeVariants {
+    project {
+      label = Project
+      items {
+        accent = Accent
+      }
+    }
+  }
+
   icons {
     project {
       label = Project Icons
@@ -44,6 +54,13 @@ bootstrapBlocks {
       spritesPath = assets/sprites/duotone.svg
     }
   }
+}
+
+# Badges of a card: at most two, only shared ones (no free badge entry), from one folder
+TCEFORM.tt_content.belsignum_bb_badges.config.maxitems = 2
+TCEFORM.belsignum_bb_badge_reference.badge {
+  removeItems = 0
+  PAGE_TSCONFIG_ID = 123
 }
 */
 
