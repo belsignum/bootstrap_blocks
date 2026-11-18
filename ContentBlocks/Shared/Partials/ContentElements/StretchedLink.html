@@ -1,0 +1,22 @@
+<html
+    data-namespace-typo3-fluid="true"
+    xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+>
+<f:comment>
+    The link of a teaser with the CTA position "stretched": its ::after covers the whole card. A partial like the CTA,
+    so a site can extend it through lib.contentBlock.partialRootPaths. The link carries the id of the content element
+    like the CTA (only one of the two is rendered), for anchors and click tracking. With "Click-enlarge" it opens the
+    link in the lightbox.
+</f:comment>
+<f:if condition="{data.image_zoom}">
+    <f:then>
+        <a href="#" class="stretched-link" id="c{data.uid}"
+           data-src="{f:uri.typolink(parameter: data.header_link)}"
+           data-fancybox data-type="iframe" data-width="100%" data-height="auto" aria-label="{data.subheader}"></a>
+    </f:then>
+    <f:else>
+        <a href="{f:uri.typolink(parameter: data.header_link)}" class="stretched-link" id="c{data.uid}" aria-label="{data.subheader}"></a>
+    </f:else>
+</f:if>
+
+</html>
